@@ -1,0 +1,75 @@
+.k4a__kudos_button {
+  position: absolute;
+  right: 1px;
+  top: -53px;
+  height: auto;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  border: 1px solid #dfdfe8;
+  border-radius: 4px;
+  font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", Roboto, Arial,
+    sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
+  font-size: 14px;
+  font-weight: 400;
+  transition: all 0.3s ease-out;
+}
+
+.k4a__kudos_button_span {
+  margin-left: 4px;
+  display: inline-block;
+}
+
+.k4a__kudos_button::before {
+  content: "";
+  position: relative;
+  display: inline-block;
+  background-image: url("data:image/svg+xml,%3Csvg version='1.1' id='Ebene_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 24 48.9' style='enable-background:new 0 0 24 48.9;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D%0A%3C/style%3E%3Cpath d='M23.7,10.7c0-0.4,0-0.8-0.2-1.2s-0.3-0.7-0.6-1c-0.3-0.3-0.6-0.5-1-0.7c-0.4-0.2-0.8-0.3-1.2-0.3h-5.4l0.7-3 c0-0.2,0-0.4,0-0.6c0-0.9-0.4-1.9-1-2.5c-0.7-0.7-1.5-1.1-2.5-1.1h-0.7l-1.1,4.3l-2.9,5.7l-7.1,3.8L4.5,24l6.6-3.5h7.5 c0.8,0,1.6-0.3,2.2-0.9s1-1.3,1-2.1l0.1-1.9c0.4-0.3,0.7-0.6,0.9-1.1c0.2-0.4,0.3-0.9,0.3-1.3c0-0.3,0-0.6-0.1-0.9 C23.4,11.8,23.6,11.2,23.7,10.7z M2.4,14.7l3.4-1.8l2.8,7.3L5.2,22L2.4,14.7z M21.8,11.7L21.5,12l0.2,0.4c0.1,0.2,0.2,0.5,0.2,0.7 c0,0.3-0.1,0.6-0.2,0.8c-0.1,0.2-0.4,0.5-0.6,0.6l-0.3,0.2l-0.2,2.6c0,0.5-0.2,0.9-0.6,1.2c-0.3,0.3-0.8,0.5-1.3,0.5h-7.9l-0.9,0.5 L7,12.3l1.8-0.9l3.2-6.1l0.9-3.5c0.5,0.1,1,0.4,1.3,0.8s0.5,0.9,0.5,1.5c0,0.1,0,0.2,0,0.3l-1.2,4.6h7.1c0.2,0,0.5,0,0.7,0.1 c0.2,0.1,0.4,0.2,0.6,0.4c0.1,0.2,0.3,0.3,0.3,0.5c0.1,0.2,0.1,0.4,0.1,0.6C22.3,11,22.1,11.4,21.8,11.7L21.8,11.7z'/%3E%3Cpath class='st0' d='M23.5,34.7c0-0.4,0-0.8-0.2-1.2c-0.1-0.4-0.3-0.7-0.6-1c-0.3-0.3-0.6-0.5-1-0.7c-0.4-0.2-0.8-0.3-1.2-0.3H15 l0.7-3c0-0.2,0-0.4,0-0.6c0-0.9-0.4-1.9-1-2.5s-1.5-1.1-2.5-1.1h-0.7l-1.1,4.3l-2.9,5.7l-7.1,3.8L4.3,48l6.6-3.5h7.5 c0.8,0,1.6-0.3,2.2-0.9s1-1.3,1-2.1l0.1-1.9c0.4-0.3,0.7-0.6,0.9-1.1c0.2-0.4,0.3-0.9,0.3-1.3c0-0.3,0-0.6-0.1-0.9 C23.3,35.8,23.5,35.2,23.5,34.7z M2.2,38.7l3.4-1.8l2.8,7.3L5,46L2.2,38.7z M21.6,35.7L21.3,36l0.2,0.4c0.1,0.2,0.2,0.5,0.2,0.7 c0,0.3-0.1,0.6-0.2,0.8c-0.1,0.2-0.4,0.5-0.6,0.6l-0.3,0.2l-0.2,2.6c0,0.5-0.2,0.9-0.6,1.2c-0.3,0.3-0.8,0.5-1.3,0.5h-7.9l-0.9,0.5 l-2.8-7.3l1.8-0.9l3.2-6.1l0.9-3.5c0.5,0.1,1,0.4,1.3,0.8c0.3,0.4,0.5,0.9,0.5,1.5c0,0.1,0,0.2,0,0.3l-1.2,4.6h7.1 c0.2,0,0.5,0,0.7,0.1c0.2,0.1,0.4,0.2,0.6,0.4c0.1,0.2,0.3,0.3,0.3,0.5c0.1,0.2,0.1,0.4,0.1,0.6C22.1,35,21.9,35.4,21.6,35.7 L21.6,35.7z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  text-align: left;
+  text-indent: -999em;
+  line-height: 1;
+  height: 16px;
+  width: 16px;
+  margin-right: 8px;
+}
+
+.k4a__kudos_button:hover::before,
+.k4a__kudos_button.k4a__kudos_button--active::before {
+  background-position: 0 -16px;
+}
+
+.k4a__kudos_button:hover,
+.k4a__kudos_button.k4a__kudos_button--active {
+  background-color: rgb(255, 105, 51);
+  color: #fff;
+}
+
+.k4a__kudos_button.k4a__kudos_button--active {
+  pointer-events: none;
+}
+
+.feed-ui {
+  position: relative;
+}
+
+.k4a__kudos_span--animate {
+  animation-name: scale;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+  20% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: translateX(1);
+  }
+}
