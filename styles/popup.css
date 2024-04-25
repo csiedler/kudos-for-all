@@ -1,31 +1,17 @@
-.k4a__kudos_container {
-  position: absolute;
-  right: 1px;
-  top: -53px;
-  display: flex;
+.k4a__body {
+  text-align: center;
+  background-color: #f1f1f5;
+  padding: 5px 20px;
   font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", Roboto, Arial,
     sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }
-
-.k4a__kudos_button {
-  display: flex;
-  height: auto;
-  padding: 10px 20px;
-  align-items: center;
-  border: 1px solid #dfdfe8;
-  border-radius: 4px 0 0 4px;
-  z-index: 2;
-  font-size: 14px;
-  font-weight: 400;
-  transition: all 0.3s ease-out;
+.k4a__h1 {
+  font-size: 16px;
+  color: rgb(255, 105, 51);
+  white-space: nowrap;
 }
 
-.k4a__kudos_button_span {
-  margin-left: 4px;
-  display: inline-block;
-}
-
-.k4a__kudos_button::before {
+.k4a__h1::before {
   content: "";
   position: relative;
   display: inline-block;
@@ -41,86 +27,21 @@
   margin-right: 8px;
 }
 
-.k4a__kudos_button:hover::before,
-.k4a__kudos_button.k4a__kudos_button--active::before {
-  background-position: 0 -16px;
-}
-
-.k4a__kudos_button:hover,
-.k4a__kudos_button.k4a__kudos_button--active {
-  background-color: rgb(255, 105, 51);
-  color: #fff;
-}
-
-.k4a__kudos_button.k4a__kudos_button--active {
-  pointer-events: none;
-}
-
-.feed-ui {
-  position: relative;
-}
-
-.k4a__kudos_span--animate {
-  animation-name: scale;
-  animation-duration: 0.3s;
-  animation-timing-function: ease-out;
-}
-
-.k4a__kudos_dropdown {
-  display: none;
-  position: absolute;
-  padding: 14px 20px;
-  background: #fff;
-  border: 1px solid #dfdfe8;
+.k4a__link {
+  color: #000;
   font-size: 14px;
-  z-index: 1;
-  top: 37px;
-  right: 0;
+  font-weight: bold;
+  text-decoration: none;
 }
 
-.k4a__kudos_dropdowntrigger {
-  color: #000000;
-  display: flex;
-  align-items: center;
-  border: 1px solid #dfdfe8;
-  border-left: 0;
-  border-radius: 0 4px 4px 0;
-  font-size: 14px;
-  font-weight: 400;
-  z-index: 2;
-  transition: all 0.3s ease-out;
+.k4a__link:hover {
+  text-decoration: underline;
 }
 
-.k4a__kudos_dropdowntrigger:hover,
-.k4a__kudos_dropdowntrigger--active {
-  background-color: rgb(255, 105, 51);
-  color: #fff;
+.k4a__footer {
+  margin-top: 20px;
 }
 
-.k4a__kudos_label {
-  display: flex;
-  gap: 5px;
-  margin-bottom: 0;
-  cursor: pointer;
-}
-
-.k4a__kudos_label input[type="checkbox"] {
-  margin: 0;
-}
-
-.k4a__kudos_show {
-  display: flex;
-}
-
-@keyframes scale {
-  0% {
-    transform: scale(1);
-  }
-  20% {
-    transform: scale(1.25);
-  }
-
-  100% {
-    transform: translateX(1);
-  }
+.k4a__version {
+  font-size: 10px;
 }
