@@ -63,12 +63,13 @@ function addKuddosButton() {
     // select the kudos Butttons
     if (clubPosts) {
       stravaButtons = document.querySelectorAll(
-        'button[title="Be the first to give kudos!"], button[title="Give kudos"]'
+        'button:has(svg[data-testid="unfilled_kudos"])'
       );
     } else {
       //except club posts
       stravaButtons = document.querySelectorAll(
-        '[id*="feed-entry-"]:has([class*="Activity__entry-icon"]) button[title="Be the first to give kudos!"], [id*="feed-entry-"]:has([class*="Activity__entry-icon"]) button[title="Give kudos"]'
+        `[id*="feed-entry-"]:has([class*="Activity__entry-icon"]) button:has(svg[data-testid="unfilled_kudos"]), 
+        [id*="feed-entry-"]:has([class*="GroupActivity__activity-icon"]) button:has(svg[data-testid="unfilled_kudos"])`
       );
     }
 
@@ -116,3 +117,5 @@ observer.observe(document, {
   childList: true,
   subtree: true,
 });
+
+// data-testid="unfilled_kudos"

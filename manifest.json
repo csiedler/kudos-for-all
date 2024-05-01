@@ -5,7 +5,7 @@
     "email": "hello@allyoucanrun.com"
   },
   "description": "Give Kudos to all your fellow athletes on Strava with just one click. More time to do sport yourself.",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "action": {
     "default_popup": "popup/popup.html",
     "default_icon": "images/icon16.png"
