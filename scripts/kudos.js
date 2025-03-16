@@ -1,121 +1,121 @@
-// build button
-const k4Btn = document.createElement("button");
-const k4BtnSpan = document.createElement("span");
-k4Btn.setAttribute("id", "k4ABtn");
-k4Btn.setAttribute("type", "button");
-k4Btn.classList.add("k4a__kudos_button");
-k4BtnSpan.classList.add("k4a__kudos_button_span");
-k4Btn.innerText = "Kudos for";
-k4BtnSpan.innerText = "all";
-k4Btn.append(k4BtnSpan);
+// Erstellt den Kudos-Button
+function createKudosButton() {
+  const btn = document.createElement("button");
+  btn.id = "k4ABtn";
+  btn.type = "button";
+  btn.className = "k4a__kudos_button";
+  btn.innerText = "Kudos for";
 
-const k4Container = document.createElement("div");
-k4Container.classList.add("k4a__kudos_container");
+  const btnSpan = document.createElement("span");
+  btnSpan.className = "k4a__kudos_button_span";
+  btnSpan.innerText = "all";
 
-const k4DropDown = `<button type="button" class="k4a__kudos_dropdowntrigger">
-<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="14" height="14" class="">
-<path d="M16 3.39V4.8l-8.02 8.03L0 4.81V3.39l7.98 8.02L16 3.39z" fill=""></path>
-</svg>
-</button> 
-<div class="k4a__kudos_dropdown"><label class="k4a__kudos_label" for="k4a__kudos_check"><input type="checkbox" id="k4a__kudos_check" checked="true"/>Club Posts</label>`;
-
-k4Container.innerHTML = k4DropDown;
-
-k4Container.prepend(k4Btn);
-
-function addKuddosButton() {
-  // insert button over the dashboard
-  const stravaFeedUi = document.querySelector(".feed-ui");
-  //stravaFeedUi.prepend(k4Btn);
-  stravaFeedUi.prepend(k4Container);
-
-  // ---------------------
-
-  const dropDownBtn = document.querySelector(".k4a__kudos_dropdowntrigger");
-  const dropDown = document.querySelector(".k4a__kudos_dropdown");
-  const checkBoxClubPosts = document.getElementById("k4a__kudos_check");
-
-  function toggleDropDown() {
-    dropDown.classList.toggle("k4a__kudos_show");
-  }
-
-  function storeClubPostsSelection() {
-    localStorage.setItem("k4a-clubposts", checkBoxClubPosts.checked);
-  }
-
-  // read and set selection for Club Posts
-  const valClubPosts = localStorage.getItem("k4a-clubposts");
-  if (valClubPosts === "false") {
-    checkBoxClubPosts.checked = false;
-  }
-
-  // EventListeners
-  dropDownBtn.addEventListener("click", toggleDropDown);
-  checkBoxClubPosts.addEventListener("change", storeClubPostsSelection);
-
-  // -----------------------
-
-  //
-  function giveKudos() {
-    const clubPosts = checkBoxClubPosts.checked;
-    let stravaButtons;
-
-    // select the kudos Butttons
-    if (clubPosts) {
-      stravaButtons = document.querySelectorAll(
-        'button:has(svg[data-testid="unfilled_kudos"])'
-      );
-    } else {
-      //except club posts
-      stravaButtons = document.querySelectorAll(
-        `[id*="feed-entry-"]:has([class*="Activity__entry-icon"]) button:has(svg[data-testid="unfilled_kudos"]), 
-        [id*="feed-entry-"]:has([class*="GroupActivity__activity-icon"]) button:has(svg[data-testid="unfilled_kudos"])`
-      );
-    }
-
-    let stravaButtonsCount = stravaButtons.length;
-
-    // no kudos to give
-    if (stravaButtonsCount === 0) return;
-
-    k4Btn.classList.add("k4a__kudos_button--active");
-    k4BtnSpan.innerText = stravaButtonsCount;
-
-    // loop over every button with a little delay and click it
-    stravaButtons.forEach((button, index) => {
-      const dtime = 326 * index;
-
-      setTimeout(function () {
-        k4BtnSpan.classList.remove("k4a__kudos_span--animate");
-        button.click();
-        k4BtnSpan.classList.add("k4a__kudos_span--animate");
-        stravaButtonsCount--;
-        if (stravaButtonsCount !== 0) {
-          k4BtnSpan.innerText = stravaButtonsCount;
-        } else {
-          k4BtnSpan.innerText = "all";
-          k4Btn.classList.remove("k4a__kudos_button--active");
-        }
-      }, dtime);
-    });
-  }
-
-  k4Btn.addEventListener("click", giveKudos);
+  btn.append(btnSpan);
+  return btn;
 }
 
-// wait for strava ui
+// Erstellt das Kudos-Container-Element mit Dropdown
+function createKudosContainer() {
+  const container = document.createElement("div");
+  container.classList.add("k4a__kudos_container");
+
+  const dropDownHTML = `
+      <button type="button" class="k4a__kudos_dropdowntrigger">
+          <svg fill="currentColor" viewBox="0 0 16 16" width="16" height="16">
+              <path d="M14.384 5.5L8.796 11.09c-.44.44-1.152.44-1.591 0L1.616 5.5l.884-.884 5.5 5.5 5.5-5.5z"></path>
+          </svg>
+      </button> 
+      <div class="k4a__kudos_dropdown">
+          <label class="k4a__kudos_label">
+              <input type="checkbox" id="k4a__kudos_check" checked> Club Posts
+          </label>
+      </div>`;
+
+  container.insertAdjacentHTML("beforeend", dropDownHTML);
+  container.prepend(createKudosButton());
+
+  // Event-Listener direkt hier hinzufügen
+  const dropDownBtn = container.querySelector(".k4a__kudos_dropdowntrigger");
+  const dropDown = container.querySelector(".k4a__kudos_dropdown");
+  const checkBoxClubPosts = container.querySelector("#k4a__kudos_check");
+
+  dropDownBtn.addEventListener("click", () =>
+    dropDown.classList.toggle("k4a__kudos_show")
+  );
+
+  checkBoxClubPosts.checked = localStorage.getItem("k4a-clubposts") !== "false";
+  checkBoxClubPosts.addEventListener("change", () => {
+    localStorage.setItem("k4a-clubposts", checkBoxClubPosts.checked);
+  });
+
+  return container;
+}
+
+// Fügt den Kudos-Button zum UI hinzu
+function addKudosButton() {
+  const stravaFeedUi = document.querySelector(".feature-feed");
+  if (!stravaFeedUi) return;
+
+  stravaFeedUi.prepend(createKudosContainer());
+
+  document.getElementById("k4ABtn").addEventListener("click", giveKudos);
+}
+
+// Kudos-Funktion
+function giveKudos() {
+  const athletIdUrl = document
+    .querySelector(".avatar.avatar-athlete")
+    .closest(".nav-link").href;
+
+  // get last part from URL - should be the ID
+  const athletId = athletIdUrl.split("/").pop();
+  const athletUrl = `/athletes/${athletId}`;
+  //a[href=""]
+
+  const checkBoxClubPosts = document.getElementById("k4a__kudos_check");
+  const k4Btn = document.getElementById("k4ABtn");
+  const k4BtnSpan = k4Btn.querySelector(".k4a__kudos_button_span");
+
+  const clubPosts = checkBoxClubPosts.checked;
+
+  let stravaButtons = document.querySelectorAll(
+    clubPosts
+      ? `[id*="feed-entry-"]:not(:has(a[href="${athletUrl}"])) button:has(svg[data-testid="unfilled_kudos"])`
+      : `[id*="feed-entry-"]:not(:has(a[href^="/clubs/"])) button:has(svg[data-testid="unfilled_kudos"])`
+  );
+
+  let count = stravaButtons.length;
+
+  if (count === 0) return;
+
+  k4Btn.classList.add("k4a__kudos_button--active");
+  k4BtnSpan.innerText = count;
+
+  // Funktion zum rekursiven Klicken mit Delay
+  function clickWithDelay(index) {
+    if (index >= stravaButtons.length) {
+      k4BtnSpan.innerText = "all";
+      k4Btn.classList.remove("k4a__kudos_button--active");
+      return;
+    }
+
+    k4BtnSpan.classList.remove("k4a__kudos_span--animate");
+    stravaButtons[index].click();
+    k4BtnSpan.classList.add("k4a__kudos_span--animate");
+    k4BtnSpan.innerText = stravaButtons.length - (index + 1);
+
+    setTimeout(() => clickWithDelay(index + 1), 326);
+  }
+
+  clickWithDelay(0);
+}
+
+// Überwacht Änderungen im DOM und fügt den Button hinzu, sobald das Strava-UI verfügbar ist
 const observer = new MutationObserver((mutations, obs) => {
-  const stravaFeedUi = document.querySelector(".feed-ui");
-  if (stravaFeedUi) {
-    addKuddosButton();
+  if (document.querySelector(".feature-feed")) {
+    addKudosButton();
     obs.disconnect();
-    return;
   }
 });
 
-observer.observe(document, {
-  childList: true,
-  subtree: true,
-});
-
-// data-testid="unfilled_kudos"
+observer.observe(document, { childList: true, subtree: true });

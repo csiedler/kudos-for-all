@@ -1,8 +1,15 @@
+.feature-feed {
+  position: relative;
+}
+
 .k4a__kudos_container {
-  position: absolute;
-  right: 1px;
-  top: -53px;
+  position: relative;
+  z-index: 1;
+  margin-left: auto;
   display: flex;
+  transform: translate(0, -52px);
+  position: absolute;
+  right: 0;
   font-family: "MaisonNeue", "Segoe UI", "Helvetica Neue", Roboto, Arial,
     sans-serif, "Segoe UI Emoji", "Segoe UI Symbol";
 }
